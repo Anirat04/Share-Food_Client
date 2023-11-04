@@ -10,7 +10,14 @@ const Featured_Foods = () => {
             .then(res => res.json())
             .then(data => setFoodCard(data))
     }, [])
-    console.log(foodCard)
+
+    // Sort the array based on Food_quantity in ascending order
+    const sortedDataDescending = foodCard?.slice().sort((a, b) => b.Food_quantity - a.Food_quantity);
+
+    console.log(sortedDataDescending);
+
+
+    // console.log(foodCard)
 
     return (
         <div className="mt-[120px] max-w-[1240px] mx-auto ">
@@ -23,13 +30,13 @@ const Featured_Foods = () => {
             </div>
             <div className="Features_items grid grid-cols-3 justify-items-center gap-[25px] items-center">
                 {
-                    foodCard?.map(data => (
-                        <div key={data.id} className="food_card flex flex-col min-w-[390px] p-6 space-y-6 overflow-hidden rounded-lg shadow-md bg-white text-gray-900 hover:scale-105 transition-all duration-300 border mb-[30px]">
+                    sortedDataDescending?.map(data => (
+                        <div key={data.id} className="food_card flex flex-col min-w-[390px] p-6 space-y-6 overflow-hidden rounded-lg shadow-md bg-white text-gray-900 hover:scale-105 transition-all duration-300 border mb-[30px] hover:border-[#23aade]">
                             {/* donator avatar */}
                             <div className="flex space-x-4 items-center">
-                                <img alt="" src={`${data.Donator_img}`} className="object-cover w-[60px] h-[60px] rounded-full shadow border border-black dark:bg-gray-500" />
+                                <img alt="" src={`${data.Donator_img}`} className="object-cover w-[50px] h-[50px] rounded-full shadow border border-black dark:bg-gray-500" />
                                 <div className="flex flex-col">
-                                    <a href="#" className="text-[20px] font-semibold">{data.Donator_name}</a>
+                                    <a href="#" className="text-[18px] font-semibold">{data.Donator_name}</a>
                                     <span className="text-[16px] dark:text-gray-400">Donator</span>
                                 </div>
                             </div>
@@ -43,7 +50,7 @@ const Featured_Foods = () => {
                                                 <h2 className="food_name mb-1 text-[26px] max-w-[250px] font-bold truncate" title={data.Food_name}>Name: {data.Food_name}</h2>
                                                 <p className="text-[16px] font-bold dark:text-gray-600">Exp: {data.Expired_date} Days</p>
                                             </div>
-                                            <p className="border border-[#23aade] inline-block px-[10px] font-bold text-gray-700 rounded-lg mr-[10px]">Additional Notes: {data.Additional_notes}</p>
+                                            <p className="border border-[#23aade] inline-block px-[10px] font-bold text-gray-700 rounded-lg mr-[10px]">Additional Note: {data.Additional_notes}</p>
                                             <br />
                                             <p className="border border-[#23aade] mt-[8px] mb-[5px] inline-block px-[10px] font-bold text-gray-700 rounded-lg">For {data.Food_quantity} Person</p>
                                             <p className="text-[16px] font-bold dark:text-gray-600">Location: "{data.Pickup_location}"</p>
