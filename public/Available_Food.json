@@ -1,0 +1,80 @@
+[
+    {
+        "id": 1,
+        "Food_img": "https://i.ibb.co/9H7Vjhk/pasta-pic.webp",
+        "Food_name": "Pasta",
+        "Donator_img": "https://i.ibb.co/Qmdm5JS/1-intro-photo-final.jpg",
+        "Donator_name": "John Doe",
+        "Donator_email": "john.doe@example.com",
+        "Food_quantity": 5,
+        "Pickup_location": "123 Main St, Cityville",
+        "Expired_date": 5,
+        "Additional_notes": "Contains gluten",
+        "Food_status": "available"
+    },
+    {
+        "id": 2,
+        "Food_img": "https://i.ibb.co/YZjrNcF/salad-pic.jpg",
+        "Food_name": "Salad",
+        "Donator_img": "https://i.ibb.co/VxcH4qr/images-1.jpg",
+        "Donator_name": "Jane Smith",
+        "Donator_email": "jane.smith@example.com",
+        "Food_quantity": 3,
+        "Pickup_location": "456 Oak St, Townsville",
+        "Expired_date": 3,
+        "Additional_notes": "Vegan-friendly",
+        "Food_status": "available"
+    },
+    {
+        "id": 3,
+        "Food_img": "https://i.ibb.co/4JG6GVS/Chicken-Curry-recipe.jpg",
+        "Food_name": "Chicken Curry",
+        "Donator_img": "https://i.ibb.co/whXNBL3/istockphoto-1372641610-612x612.jpg",
+        "Donator_name": "Sam Johnson",
+        "Donator_email": "sam.johnson@example.com",
+        "Food_quantity": 7,
+        "Pickup_location": "789 Pine St, Villagetown",
+        "Expired_date": 7,
+        "Additional_notes": "Spicy",
+        "Food_status": "available"
+    },
+    {
+        "id": 4,
+        "Food_img": "https://i.ibb.co/G5KrxBK/Large-Fruit-Basket-e1430629615290.webp",
+        "Food_name": "Fruit Basket",
+        "Donator_img": "https://i.ibb.co/XpWR4pG/christina-wocintechchat-com-50tkcap8m3a-unsplash.jpg",
+        "Donator_name": "Emily White",
+        "Donator_email": "emily.white@example.com",
+        "Food_quantity": 4,
+        "Pickup_location": "101 Cedar St, Hamletville",
+        "Expired_date": 2,
+        "Additional_notes": "Assorted fruits",
+        "Food_status": "available"
+    },
+    {
+        "id": 5,
+        "Food_img": "https://i.ibb.co/nw69XyR/classic-cheese-pizza-recipe-2-64429a0cb408b.jpg",
+        "Food_name": "Pizza",
+        "Donator_img": "https://i.ibb.co/2q4sS7H/download.jpg",
+        "Donator_name": "Alex Brown",
+        "Donator_email": "alex.brown@example.com",
+        "Food_quantity": 6,
+        "Pickup_location": "202 Maple St, Suburbia",
+        "Expired_date": 4,
+        "Additional_notes": "Pepperoni and cheese",
+        "Food_status": "available"
+    },
+    {
+        "id": 6,
+        "Food_img": "https://i.ibb.co/xLRFfFj/opt-aboutcom-coeus-resources-content-migration-serious-eats-seriouseats-com-recipes-images-2017-12-2.jpg",
+        "Food_name": "Soup",
+        "Donator_img": "https://i.ibb.co/xC8Rp3D/images.jpg",
+        "Donator_name": "Grace Taylor",
+        "Donator_email": "grace.taylor@example.com",
+        "Food_quantity": 2,
+        "Pickup_location": "303 Birch St, Countryside",
+        "Expired_date": 6,
+        "Additional_notes": "Homemade",
+        "Food_status": "available"
+    }
+]

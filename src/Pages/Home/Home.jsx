@@ -1,7 +1,11 @@
+import Banner from "./Home_Components/Banner/Banner";
+import Featured_Foods from "./Home_Components/Featured_Foods/Featured_Foods";
+
 const Home = () => {
     return (
         <div>
-            <h1>This is home component</h1>
+            <Banner></Banner>
+            <Featured_Foods></Featured_Foods>
         </div>
     );
 };

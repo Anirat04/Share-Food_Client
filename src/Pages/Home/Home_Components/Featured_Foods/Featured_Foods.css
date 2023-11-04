@@ -1,0 +1,4 @@
+.food_card:hover .food_name{
+    color: #23aade;
+    text-decoration: underline #23aade;
+}
