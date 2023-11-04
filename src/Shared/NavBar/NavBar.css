@@ -1,0 +1,13 @@
+.navHoverClass:hover{
+    color: #23aade;
+}
+
+.nav-active .active{
+    color: #23aade;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+
+.svg-stroke:hover path{
+    stroke: #23aade;
+}
