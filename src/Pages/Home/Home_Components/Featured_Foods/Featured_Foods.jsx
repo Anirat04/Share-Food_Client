@@ -1,12 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useEffect, useState } from "react";
 import './Featured_Foods.css'
+import { Link } from "react-router-dom";
 const Featured_Foods = () => {
 
     const [foodCard, setFoodCard] = useState()
 
     useEffect(() => {
-        fetch('/public/Available_Food.json')
+        fetch('http://localhost:5000/services')
             .then(res => res.json())
             .then(data => setFoodCard(data))
     }, [])
@@ -14,7 +15,7 @@ const Featured_Foods = () => {
     // Sort the array based on Food_quantity in ascending order
     const sortedDataDescending = foodCard?.slice().sort((a, b) => b.Food_quantity - a.Food_quantity);
 
-    console.log(sortedDataDescending);
+    // console.log(sortedDataDescending);
 
 
     // console.log(foodCard)
@@ -52,12 +53,14 @@ const Featured_Foods = () => {
                                             </div>
                                             <p className="border border-[#23aade] inline-block px-[10px] font-bold text-gray-700 rounded-lg mr-[10px]">Additional Note: {data.Additional_notes}</p>
                                             <br />
-                                            <p className="border border-[#23aade] mt-[8px] mb-[5px] inline-block px-[10px] font-bold text-gray-700 rounded-lg">For {data.Food_quantity} Person</p>
+                                            <p className="border border-[#23aade] mt-[8px] mb-[5px] inline-block px-[10px] font-bold text-gray-700 rounded-lg">Quantity: For {data.Food_quantity} Person</p>
                                             <p className="text-[16px] font-bold dark:text-gray-600">Location: "{data.Pickup_location}"</p>
                                         </div>
                                     </div>
                                     <div className="flex justify-center">
-                                        <button className="py-[10px] mb-[20px] rounded-lg mt-[10px] min-w-full border border-[#23aade] bg-white text-[#23aade] font-bold hover:bg-[#23aade] hover:text-white">View Details</button>
+                                        <Link to={`/food/${data._id}`}>
+                                            <button className="py-[10px] mb-[20px] rounded-lg mt-[10px] min-w-full border border-[#23aade] bg-white text-[#23aade] font-bold hover:bg-[#23aade] hover:text-white">View Details</button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -66,7 +69,9 @@ const Featured_Foods = () => {
                 }
             </div>
             <div className="flex justify-center">
-                <button className="py-[10px] mb-[20px] rounded-lg mt-[10px] px-[50px] border border-[#23aade] bg-white text-[#23aade] font-bold hover:bg-[#23aade] hover:text-white transition-all duration-300">View Details</button>
+                <Link to="/available-foods">
+                    <button className="py-[10px] mb-[20px] rounded-lg mt-[10px] px-[50px] border border-[#23aade] bg-white text-[#23aade] font-bold hover:bg-[#23aade] hover:text-white transition-all duration-300">Show All</button>
+                </Link>
             </div>
         </div>
     );
