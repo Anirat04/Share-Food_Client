@@ -7,7 +7,7 @@ const Featured_Foods = () => {
     const [foodCard, setFoodCard] = useState()
 
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('http://localhost:5000/available_foods')
             .then(res => res.json())
             .then(data => setFoodCard(data))
     }, [])

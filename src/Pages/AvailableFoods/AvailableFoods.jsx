@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+/* eslint-disable react/no-unescaped-entities */
+import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 
 const AvailableFoods = () => {
     const [searchText, setSearchText] = useState('')
