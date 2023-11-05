@@ -27,11 +27,11 @@ const AvailableFoods = () => {
 
     // sort conditions
     if(sortValue == 'descending'){
-         fetchData = fetchData?.slice().sort((a, b) => b.Food_quantity - a.Food_quantity)
+         fetchData = fetchData?.slice().sort((a, b) => b.Expired_date - a.Expired_date)
         // console.log(sortedDataDescending)
     }
     else if(sortValue == 'ascending'){
-         fetchData = fetchData?.slice().sort((a, b) => a.Food_quantity - b.Food_quantity);
+         fetchData = fetchData?.slice().sort((a, b) => a.Expired_date - b.Expired_date);
         console.log('ascending data')
     }
     else{
@@ -45,26 +45,9 @@ const AvailableFoods = () => {
         e.preventDefault();
         const searchText = e.target.search.value;
         const getSortValue = e.target.sortBy.value;
-        // console.log(searchText);
         setSearchText(searchText);
         setSortValue(getSortValue);
-        // if (searchText == '') {
-        //     Swal.fire({
-        //         icon: 'error',
-        //         title: 'Oops...',
-        //         text: 'The search bar is empty, please search by Food name or search "all" to get all results',
-        //     })
-        //     setSearchText('all')
-        // }
-        // else {
-        //     setSearchText(searchText);
-        // }
     }
-
-    // const handleSort = e => {
-    //     const getSortValue = e.target.ascending.value
-    //     console.log(getSortValue)
-    // }
 
     console.log(sortValue)
 
@@ -83,7 +66,7 @@ const AvailableFoods = () => {
                     <div className="flex">
                         <ul>
                             <select className="flex-nowrap min-w-[120px] z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100" name="sortBy" id="">
-                                <option value="sort">Sort By</option>
+                                <option value="sort">Sort By EXP</option>
                                 <option value="ascending">Ascending</option>
                                 <option value="descending">Descending </option>
                             </select>
