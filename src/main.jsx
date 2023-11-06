@@ -13,6 +13,7 @@ import Login from './Pages/Login/Login.jsx';
 import Register from './Pages/Register/Register.jsx';
 import Provider from './Provider/Provider.jsx';
 import MyFoodRequests from './Pages/MyFoodRequests/MyFoodRequests.jsx';
+import PrivateRoutes from './PrivateRoutes/PrivateRoutes.jsx';
 
 const router = createBrowserRouter([
   {
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/myFoodRequests",
-        element: <MyFoodRequests></MyFoodRequests>
+        element: <PrivateRoutes><MyFoodRequests></MyFoodRequests></PrivateRoutes>
       },
       {
         path: "/login",
