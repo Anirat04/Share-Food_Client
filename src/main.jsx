@@ -12,6 +12,7 @@ import AvailableFoods from './Pages/AvailableFoods/AvailableFoods.jsx';
 import Login from './Pages/Login/Login.jsx';
 import Register from './Pages/Register/Register.jsx';
 import Provider from './Provider/Provider.jsx';
+import MyFoodRequests from './Pages/MyFoodRequests/MyFoodRequests.jsx';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "/available-foods/register",
         element: <Register></Register>
+      },
+      {
+        path: "/myFoodRequests",
+        element: <MyFoodRequests></MyFoodRequests>
       },
       {
         path: "/login",

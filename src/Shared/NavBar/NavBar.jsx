@@ -10,7 +10,7 @@ const NavBar = () => {
         <NavLink className="navHoverClass" to='/available-foods'>Available Foods</NavLink>
         <NavLink className="navHoverClass" to='/add-food'>Add Food</NavLink>
         <NavLink className="navHoverClass" to='/my-foods'>Manage My Foods</NavLink>
-        <NavLink className="navHoverClass" to='/food-requests'>My Food Requests</NavLink>
+        <NavLink className="navHoverClass" to='/myFoodRequests'>My Food Requests</NavLink>
         {/* <NavLink className="navHoverClass" to='/login'>Login</NavLink> */}
     </>
     const [isChecked, setIsChecked] = useState(false);

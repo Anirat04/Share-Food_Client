@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useLoaderData } from "react-router-dom";
 import { ProviderContext } from "../../Provider/Provider";
+import Swal from "sweetalert2";
 
 const Details = () => {
     // const [details , setDetails] = useState([])
@@ -47,23 +48,59 @@ const Details = () => {
         const Food_id = form.food_id.value
         const Donator_email = form.donator_email.value
         const Donator_name = form.donator_name.value
-        const User_email = form.food_name.value
+        const User_email = form.user_email.value
         const Request_date = form.request_time.value
         const Pickup_location = form.pickup_location.value
         const Expire_date = form.expire_date.value
         const Additional_note = form.additional_note.value
         const Donation_amount = form.donation_amount.value
-        console.log('Food name' + Food_name)
-        console.log('Food image' + Food_image)
-        console.log('Food id' + Food_id)
-        console.log('Donator email' + Donator_email)
-        console.log('Donator_name' + Donator_name)
-        console.log('User_email' + User_email)
-        console.log('Request_date' + Request_date)
-        console.log('Pickup_location' + Pickup_location)
-        console.log('Expire_date' + Expire_date)
-        console.log('Additional_note' + Additional_note)
-        console.log('Donation_amount' + Donation_amount)
+        const request = {
+            Food_name,
+            Food_image,
+            Food_id,
+            Donator_email,
+            Donator_name,
+            User_email,
+            Request_date,
+            Pickup_location,
+            Expire_date,
+            Additional_note,
+            Donation_amount
+        }
+
+        fetch('http://localhost:5000/foodRequests', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(request)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                alert('data added')
+            })
+            .catch((err) => {
+                console.log(err);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'You have already added this product to the cart!',
+                })
+            })
+        // console.log(request)
+        // console.log('Food name' + Food_name)
+        // console.log('Food image' + Food_image)
+        // console.log('Food id' + Food_id)
+        // console.log('Donator email' + Donator_email)
+        // console.log('Donator_name' + Donator_name)
+        // console.log('User_email' + User_email)
+        // console.log('Request_date' + Request_date)
+        // console.log('Pickup_location' + Pickup_location)
+        // console.log('Expire_date' + Expire_date)
+        // console.log('Additional_note' + Additional_note)
+        // console.log('Donation_amount' + Donation_amount)
+        form.reset();
     }
 
 
@@ -84,14 +121,14 @@ const Details = () => {
                             <p className="text-[26px] font-semibold">Expired Date: {takeDetails.Expired_date} Days</p>
                         </div>
                         <div className="flex">
-                            <button className="btn px-[60px] min-w-full text-white bg-[#23aade] rounded-lg hover:bg-transparent hover:border-[#23aade] hover:text-[#23aade]">Request</button>
+                            <button onClick={handleButtonClick} className="btn px-[60px] min-w-full text-white bg-[#23aade] rounded-lg hover:bg-transparent hover:border-[#23aade] hover:text-[#23aade]">Request</button>
                         </div>
                         {/* Open the modal using document.getElementById('ID').showModal() method */}
-                        <button className="btn" onClick={handleButtonClick}>open modal</button>
+                        {/* <button className="btn" >open modal</button> */}
                         <dialog id="my_modal_1" className="modal">
                             <div className="modal-box p-0 min-w-[1100px]">
                                 <section className=" dark:text-gray-100 bg-slate-600 min-w-full">
-                                    <form onSubmit={handleRequestData} className="container w-full  p-8 mx-auto space-y-6 rounded-md shadow">
+                                    <form method="dialog" onSubmit={handleRequestData} className="container w-full  p-8 mx-auto space-y-6 rounded-md shadow">
                                         <h2 className="w-full text-3xl font-bold leadi text-gray-900">Contact us</h2>
                                         {/*  */}
                                         <div className="grid grid-cols-2 gap-5">
@@ -261,9 +298,13 @@ const Details = () => {
                                             </textarea>
                                         </div>
                                         <div>
-                                            <button type="submit" className="w-full px-4 py-2 font-bold rounded shadow focus:outline-none focus:ring hover:ring focus:ri dark:bg-violet-400 focus:ri hover:ri dark:text-gray-900">Send</button>
+                                            <button onClick={handleButtonClick} className="btn px-[60px] min-w-full text-white bg-[#23aade] rounded-lg hover:bg-transparent hover:border-[#23aade] hover:text-[#23aade]">Request</button>
                                         </div>
+                                        <form method="dialog">
+                                            <button className="w-full px-4 py-2 font-bold rounded shadow focus:outline-none focus:ring hover:ring focus:ri dark:bg-violet-400 focus:ri hover:ri dark:text-gray-900">close</button>
+                                        </form>
                                     </form>
+
                                 </section>
                             </div>
                         </dialog>
