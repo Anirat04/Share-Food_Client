@@ -65,7 +65,8 @@ const Details = () => {
             Pickup_location,
             Expire_date,
             Additional_note,
-            Donation_amount
+            Donation_amount,
+            Food_status : `${takeDetails.Food_status}`
         }
 
         fetch('http://localhost:5000/foodRequests', {
