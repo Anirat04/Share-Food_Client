@@ -9,6 +9,9 @@ import Layout from './Layout/Layout.jsx';
 import Home from './Pages/Home/Home.jsx';
 import Details from './Pages/Details/Details.jsx';
 import AvailableFoods from './Pages/AvailableFoods/AvailableFoods.jsx';
+import Login from './Pages/Login/Login.jsx';
+import Register from './Pages/Register/Register.jsx';
+import Provider from './Provider/Provider.jsx';
 
 const router = createBrowserRouter([
   {
@@ -20,21 +23,40 @@ const router = createBrowserRouter([
         element: <Home></Home>
       },
       {
-        path:"/food/:id",
+        path: "/food/:id",
         element: <Details></Details>,
-        loader: ({params}) => fetch(`http://localhost:5000/available_foods/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/available_foods/${params.id}`)
       },
       {
-        path:"/available-foods",
+        path: "/available-foods",
         element: <AvailableFoods></AvailableFoods>,
         loader: () => fetch(`http://localhost:5000/available_foods`)
+      },
+      {
+        path: "/available-foods/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/available-foods/register",
+        element: <Register></Register>
+      },
+      {
+        path: "/login",
+        element: <Login></Login>
+      },
+      {
+        path: "/register",
+        element: <Register></Register>
       }
-    ]
+    ],
   },
+
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>,
 )

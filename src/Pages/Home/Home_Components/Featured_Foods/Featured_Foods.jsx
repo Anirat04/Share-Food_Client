@@ -32,7 +32,7 @@ const Featured_Foods = () => {
             <div className="Features_items grid grid-cols-3 justify-items-center gap-[25px] items-center">
                 {
                     sortedDataDescending?.map(data => (
-                        <div key={data.id} className="food_card flex flex-col min-w-[390px] p-6 space-y-6 overflow-hidden rounded-lg shadow-md bg-white text-gray-900 hover:scale-105 transition-all duration-300 border mb-[30px] hover:border-[#23aade]">
+                        <div key={data.service_id} className="food_card flex flex-col min-w-[390px] p-6 space-y-6 overflow-hidden rounded-lg shadow-md bg-white text-gray-900 hover:scale-105 transition-all duration-300 border mb-[30px] hover:border-[#23aade]">
                             {/* donator avatar */}
                             <div className="flex space-x-4 items-center">
                                 <img alt="" src={`${data.Donator_img}`} className="object-cover w-[50px] h-[50px] rounded-full shadow border border-black dark:bg-gray-500" />

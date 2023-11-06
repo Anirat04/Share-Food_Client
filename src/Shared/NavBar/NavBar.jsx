@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import './NavBar.css';
+import { ProviderContext } from "../../Provider/Provider";
 
 const NavBar = () => {
+    const { user, logOut, loading } = useContext(ProviderContext)
     const NavLinks = <>
         <NavLink className="navHoverClass" to='/'>Home</NavLink>
         <NavLink className="navHoverClass" to='/available-foods'>Available Foods</NavLink>
         <NavLink className="navHoverClass" to='/add-food'>Add Food</NavLink>
         <NavLink className="navHoverClass" to='/my-foods'>Manage My Foods</NavLink>
         <NavLink className="navHoverClass" to='/food-requests'>My Food Requests</NavLink>
-        <NavLink className="navHoverClass" to='/login'>Login</NavLink>
+        {/* <NavLink className="navHoverClass" to='/login'>Login</NavLink> */}
     </>
     const [isChecked, setIsChecked] = useState(false);
 
@@ -17,7 +19,16 @@ const NavBar = () => {
         setIsChecked(!isChecked);
     };
 
-    
+    // this event handler is to log out users from the server
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                console.log('user logged out')
+            })
+            .catch(error => console.log('error logging out', error))
+    }
+
+
     return (
         <div>
             <div className="navbar bg-base-100 max-w-[1240px] mx-auto justify-evenly flex-col sm:flex-row my-[30px]">
@@ -32,7 +43,28 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end flex justify-center sm:justify-end">
-                    <a className="btn bg-transparent border-[#FF3811] text-[#FF3811] hover:border-[#FF3811]">Appointment</a>
+                    <div className="ml-8">
+                        {
+                            loading ? <>
+                            </>
+                                : <>
+                                    {
+                                        user ? <>
+                                            <button
+                                                className="btn text-white bg-[#23aade] rounded-lg hover:bg-transparent hover:border-[#23aade] hover:text-[#23aade]"
+                                                onClick={handleLogOut}
+                                            >
+                                                Logout
+                                            </button>
+                                        </>
+                                            : <Link to="/login">
+                                                <button className="btn text-white bg-[#23aade] rounded-lg hover:bg-transparent hover:border-[#23aade] hover:text-[#23aade]">Login</button>
+                                            </Link>
+                                    }
+                                </>
+                        }
+
+                    </div>
                     <details className="dropdown dropdown-bottom dropdown-end lg:hidden">
                         <summary className="m-1 btn btn-circle swap swap-rotate" onClick={toggleIcons}>
 
