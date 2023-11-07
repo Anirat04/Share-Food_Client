@@ -16,6 +16,7 @@ import MyFoodRequests from './Pages/MyFoodRequests/MyFoodRequests.jsx';
 import PrivateRoutes from './PrivateRoutes/PrivateRoutes.jsx';
 import AddFood from './Pages/AddFood/AddFood.jsx';
 import BasicTable from './ReactTable/BasicTable.jsx';
+import ManageMyFoods from './Pages/ManageMyFoods/ManageMyFoods.jsx';
 
 const router = createBrowserRouter([
   {
@@ -61,8 +62,8 @@ const router = createBrowserRouter([
         element: <Register></Register>
       },
       {
-        path: "/react-table",
-        element: <PrivateRoutes><BasicTable></BasicTable></PrivateRoutes>
+        path: "/my-foods",
+        element: <PrivateRoutes><ManageMyFoods></ManageMyFoods></PrivateRoutes>
       }
     ],
   },
