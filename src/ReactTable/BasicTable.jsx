@@ -5,6 +5,10 @@ import { useTable } from 'react-table'
 import { COLUMNS } from './columns'
 import { ProviderContext } from '../Provider/Provider';
 import Swal from 'sweetalert2';
+// import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const BasicTable = () => {
     const { user } = useContext(ProviderContext)
@@ -94,6 +98,8 @@ const BasicTable = () => {
         openModal();
     };
 
+
+
     // final edit function
     const handleEdit = e => {
         e.preventDefault();
@@ -105,20 +111,20 @@ const BasicTable = () => {
         // const Donator_name = form.donator_name.value //
         // const Donator_image = form.donator_image.value //
         const Pickup_location = form.pickup_location.value //
-        // const Food_status = form.food_status.value //
+        const Food_status = form.food_status.value //
         const Expire_date = form.expire_date.value //
         const Additional_note = form.additional_note.value //
         const request = {
             Food_img: Food_image,
             Food_name,
-            // Donator_img: Donator_image,
-            // Donator_name,
-            // Donator_email,
+            Donator_img: user.photoURL,
+            Donator_name: user.displayName,
+            Donator_email: user.email,
             Food_quantity,
             Pickup_location,
             Expired_date: Expire_date,
             Additional_notes: Additional_note,
-            // Food_status,
+            Food_status: Food_status,
         }
         fetch(`http://localhost:5000/available_foods/${getIdForEdit}`, {
             method: 'PATCH',
@@ -132,11 +138,50 @@ const BasicTable = () => {
                 console.log(data);
                 if (data.modifiedCount > 0) {
                     // update state
+                    const remaining = fetchData.filter(fetchRemain => fetchRemain._id !== getIdForEdit)
+                    let updated = fetchData.find(updateData => updateData._id === getIdForEdit);
+
+                    // those are possible ways..........
+                    // updated.Food_name = request.Food_name;
+                    // updated.Food_img = request.Food_img;
+                    // updated = {
+                    //     Food_name : request.Food_name
+                    // }
+                    // .............
+                    updated = request
+                    const newUpdatedData = [updated, ...remaining]
+                    setFetchData(newUpdatedData);
+                    console.log(updated)
+                    toast.success('Successfully updated the Food information!', {
+                        position: "bottom-right",
+                        autoClose: 1500,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+                    form.reset()
+
+                }
+                else {
+                    toast.error('Oops, All are same, nothing to update !', {
+                        position: "bottom-right",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+                    form.reset()
                 }
             })
     }
     // console.log(fetchData)
-    console.log(getIdForEdit)
+    // console.log(getIdForEdit)
     const {
         getTableProps,
         getTableBodyProps,
@@ -221,6 +266,18 @@ const BasicTable = () => {
 
             {/* handle the edit */}
             <dialog id="my_modal_1" className="modal">
+                <ToastContainer
+                    position="bottom-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light"
+                />
                 <div className="modal-box">
                     <section className=" dark:text-gray-100  min-w-full">
                         <form onSubmit={handleEdit} className="container w-full  p-8 mx-auto bg-[#4898b8] space-y-6 rounded-md shadow">
