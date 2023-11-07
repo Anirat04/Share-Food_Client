@@ -7,10 +7,10 @@ export const COLUMNS = [
         Header: 'Donator Name',
         accessor: 'Donator_name',
     },
-    {
-        Header: 'Donator Email',   
-        accessor: 'Donator_email',
-    },
+    // {
+    //     Header: 'Donator Email',   
+    //     accessor: 'Donator_email',
+    // },
     {
         Header: 'Quantity',
         accessor: 'Food_quantity', 

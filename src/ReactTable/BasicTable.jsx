@@ -69,23 +69,31 @@ const BasicTable = () => {
         prepareRow,
     } = tableInstance
 
+    console.log(headerGroups)
     console.log(rows)
     return (
-        <div>
-            <table {...getTableProps()}>
-                <thead>
+        <div className='max-w-[1240px] mx-auto'>
+            <table className='table' {...getTableProps()}>
+                <thead className='text-center'>
                     {
                         headerGroups.map((headerGroup => (
-                            <tr {...headerGroup.getHeaderGroupProps()}>
+                            <tr className='text-[20px]' {...headerGroup.getHeaderGroupProps()}>
+                                <th>Food Img</th>
                                 {
                                     headerGroup.headers.map((column) => (
-                                        <th
-                                            {...column.getHeaderProps()}
-                                        >
-                                            {column.render('Header')}
-                                        </th>
+                                        <>
+
+                                            <th
+                                                {...column.getHeaderProps()}
+                                                >
+                                                {column.render('Header')}
+                                            </th>
+                                        </>
                                     ))
                                 }
+                                <th>Manage</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                             </tr>
                         )))
                     }
@@ -96,18 +104,35 @@ const BasicTable = () => {
                         rows.map(row => {
                             prepareRow(row)
                             return (
-                                <tr className='border' {...row.getRowProps}>
-                                    {
-                                        row.cells.map(cell => {
-                                            return <td className='pl-[50px]' {...cell.getCellProps()}>
-                                                {cell.render('Cell')}
-                                            </td>
-                                        })
-                                    }
-                                    <td>
-                                        <button onClick={() => handleDelete(row)} className='btn'>edit</button>
-                                    </td>
-                                </tr>
+                                <>
+                                    <tr className='border text-[18px]' {...row.getRowProps}>
+                                        <td>
+                                            <div className="flex items-center space-x-3">
+                                                <div className="avatar">
+                                                    <div className="mask mask-squircle w-12 h-12">
+                                                        <img src={row.original.Food_img} alt="Avatar Tailwind CSS Component" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        {
+                                            row.cells.map(cell => {
+                                                return <td className='text-center' {...cell.getCellProps()}>
+                                                    {cell.render('Cell')}
+                                                </td>
+                                            })
+                                        }
+                                        <td>
+                                            <button onClick={() => handleDelete(row)} className='btn'>edit</button>
+                                        </td>
+                                        <td>
+                                            <button onClick={() => handleDelete(row)} className='btn'>edit</button>
+                                        </td>
+                                        <td>
+                                            <button onClick={() => handleDelete(row)} className="btn text-white bg-[#23aade] rounded-lg hover:bg-transparent hover:border-red-600 hover:text-red-600">Delete</button>
+                                        </td>
+                                    </tr>
+                                </>
                             )
                         })
                     }
