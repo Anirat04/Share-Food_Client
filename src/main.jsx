@@ -14,6 +14,7 @@ import Register from './Pages/Register/Register.jsx';
 import Provider from './Provider/Provider.jsx';
 import MyFoodRequests from './Pages/MyFoodRequests/MyFoodRequests.jsx';
 import PrivateRoutes from './PrivateRoutes/PrivateRoutes.jsx';
+import AddFood from './Pages/AddFood/AddFood.jsx';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
         path: "/available-foods",
         element: <AvailableFoods></AvailableFoods>,
         loader: () => fetch(`http://localhost:5000/available_foods`)
+      },
+      {
+        path: "/add-food",
+        element: <AddFood></AddFood>
       },
       {
         path: "/available-foods/login",

@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useContext, useState } from "react";
-import { useForm } from "react-hook-form";
 import { useLoaderData } from "react-router-dom";
 import { ProviderContext } from "../../Provider/Provider";
 import Swal from "sweetalert2";
@@ -130,7 +129,7 @@ const Details = () => {
                             <div className="modal-box p-0 min-w-[1100px]">
                                 <section className=" dark:text-gray-100 bg-slate-600 min-w-full">
                                     <form method="dialog" onSubmit={handleRequestData} className="container w-full  p-8 mx-auto space-y-6 rounded-md shadow">
-                                        <h2 className="w-full text-3xl font-bold leadi text-gray-900">Contact us</h2>
+                                        <h2 className="w-full text-center text-3xl font-bold leadi text-gray-900">Request for a Food</h2>
                                         {/*  */}
                                         <div className="grid grid-cols-2 gap-5">
                                             {/* Food name */}
