@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { ProviderContext } from "../../Provider/Provider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const AddFood = () => {
     const { user } = useContext(ProviderContext)
@@ -55,6 +56,10 @@ const AddFood = () => {
     }
     return (
         <div className="max-w-[1240px] mx-auto">
+            <Helmet>
+                <title>ShareFood | Add Food
+                </title>
+            </Helmet>
             <section className=" dark:text-gray-100  min-w-full">
                 <form onSubmit={handleAddFood} className="container w-full  p-8 mx-auto bg-[#4898b8] space-y-6 rounded-md shadow">
                     <h2 className="w-full text-center text-[40px] font-bold leadi text-gray-900">Add New Food</h2>

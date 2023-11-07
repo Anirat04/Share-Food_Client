@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { ProviderContext } from "../../Provider/Provider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const Details = () => {
     // const [details , setDetails] = useState([])
@@ -88,25 +89,16 @@ const Details = () => {
                     text: 'You have already added this product to the cart!',
                 })
             })
-        // console.log(request)
-        // console.log('Food name' + Food_name)
-        // console.log('Food image' + Food_image)
-        // console.log('Food id' + Food_id)
-        // console.log('Donator email' + Donator_email)
-        // console.log('Donator_name' + Donator_name)
-        // console.log('User_email' + User_email)
-        // console.log('Request_date' + Request_date)
-        // console.log('Pickup_location' + Pickup_location)
-        // console.log('Expire_date' + Expire_date)
-        // console.log('Additional_note' + Additional_note)
-        // console.log('Donation_amount' + Donation_amount)
         form.reset();
     }
 
 
     return (
         <div className="max-w-[1240px] mx-auto mb-[100px] border shadow-xl rounded-xl p-8">
-
+            <Helmet>
+                <title>ShareFood | Details
+                </title>
+            </Helmet>
             <div className=" grid grid-cols-2 gap-8">
                 <div className="details-img max-w-[600px] border-[3px] rounded-2xl border-[#23aade] shadow-xl">
                     <img className="max-w-full rounded-xl" src={takeDetails.Food_img} alt="" />

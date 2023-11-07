@@ -1,7 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 import { Link, useLoaderData } from "react-router-dom";
 // import Swal from "sweetalert2";
+
 
 const AvailableFoods = () => {
     const [searchText, setSearchText] = useState('')
@@ -13,7 +15,7 @@ const AvailableFoods = () => {
 
     let fetchData = availableFoods;
 
-    if (searchText == null || searchText== '' || searchText == 'all') {
+    if (searchText == null || searchText == '' || searchText == 'all') {
         fetchData = availableFoods;
         console.log('it is inside if')
     }
@@ -27,16 +29,16 @@ const AvailableFoods = () => {
     }
 
     // sort conditions
-    if(sortValue == 'descending'){
-         fetchData = fetchData?.slice().sort((a, b) => b.Expired_date - a.Expired_date)
+    if (sortValue == 'descending') {
+        fetchData = fetchData?.slice().sort((a, b) => b.Expired_date - a.Expired_date)
         // console.log(sortedDataDescending)
     }
-    else if(sortValue == 'ascending'){
-         fetchData = fetchData?.slice().sort((a, b) => a.Expired_date - b.Expired_date);
+    else if (sortValue == 'ascending') {
+        fetchData = fetchData?.slice().sort((a, b) => a.Expired_date - b.Expired_date);
         console.log('ascending data')
     }
-    else{
-        fetchData= availableFoods;
+    else {
+        fetchData = availableFoods;
     }
 
     // console.log(fetchData);
@@ -54,6 +56,10 @@ const AvailableFoods = () => {
 
     return (
         <div className="mt-[120px] max-w-[1240px] mx-auto ">
+            <Helmet>
+                <title>ShareFood | Available Foods
+                </title>
+            </Helmet>
             <div className="common_Heading text-center">
                 {/* <h3 className="font-bold text-[#23aade] mb-[20px] text-[20px]">Core Features</h3> */}
                 <h1 className="text-5xl font-bold text-[#23aade]">Available Foods</h1>

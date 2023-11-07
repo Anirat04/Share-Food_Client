@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { ProviderContext } from "../../Provider/Provider";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 
 
@@ -56,6 +57,10 @@ const Login = () => {
 
     return (
         <div className="min-h-screen bg-base-200 pb-[100px]">
+            <Helmet>
+                <title>ShareFood | Login
+                </title>
+            </Helmet>
             <div className="hero pt-[50px]">
                 <div className="hero-content flex-col">
                     <div className="text-center lg:text-left">

@@ -15,7 +15,6 @@ import Provider from './Provider/Provider.jsx';
 import MyFoodRequests from './Pages/MyFoodRequests/MyFoodRequests.jsx';
 import PrivateRoutes from './PrivateRoutes/PrivateRoutes.jsx';
 import AddFood from './Pages/AddFood/AddFood.jsx';
-import BasicTable from './ReactTable/BasicTable.jsx';
 import ManageMyFoods from './Pages/ManageMyFoods/ManageMyFoods.jsx';
 
 const router = createBrowserRouter([

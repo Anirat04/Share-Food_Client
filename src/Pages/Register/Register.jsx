@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ProviderContext } from "../../Provider/Provider";
 // import { ProviderContext } from "../../provider/provider";
 import Swal from 'sweetalert2';
+import { Helmet } from "react-helmet";
 
 
 const Register = () => {
@@ -25,18 +26,18 @@ const Register = () => {
         else {
             createUser(email, password, displayName, photoURL)
                 .then(result => {
-                console.log(result.user)
-                e.target.reset();
-                Navigate("/")
-                Swal.fire(
-                    'Registration completed successfully by Email',
-                    "Enjoy our services don't forget to feedback",
-                    'success'
-                )
+                    console.log(result.user)
+                    e.target.reset();
+                    Navigate("/")
+                    Swal.fire(
+                        'Registration completed successfully by Email',
+                        "Enjoy our services don't forget to feedback",
+                        'success'
+                    )
                 })
                 .catch(error => {
-                console.log("error: ", error);
-                setRegError(error.message);
+                    console.log("error: ", error);
+                    setRegError(error.message);
                 })
         }
 
@@ -44,6 +45,10 @@ const Register = () => {
 
     return (
         <div className="min-h-screen bg-base-200">
+            <Helmet>
+                <title>ShareFood | Register
+                </title>
+            </Helmet>
             <div className="hero pt-[80px] pb-[100px]">
                 <div className="hero-content flex-col">
                     <div className="text-center lg:text-left">

@@ -2,6 +2,7 @@
 import { useContext, useEffect, useState } from "react";
 import { ProviderContext } from "../../Provider/Provider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const MyFoodRequests = () => {
     const { user } = useContext(ProviderContext)
@@ -58,6 +59,10 @@ const MyFoodRequests = () => {
     }
     return (
         <div className="max-w-[1240px] mx-auto">
+            <Helmet>
+                <title>ShareFood | My Food Requests
+                </title>
+            </Helmet>
             <div className="overflow-x-auto shadow-xl min-h-[700px] border">
                 <h1 className="text-[#23aade] text-[36px] font-bold text-center my-[30px] outline-dotted">Your All Requested Foods There</h1>
                 <table className="table">
