@@ -51,7 +51,7 @@ const AddFood = () => {
                     text: 'You have already added this product to the collection!',
                 })
             })
-        form.reset();
+        // form.reset();
     }
     return (
         <div className="max-w-[1240px] mx-auto">

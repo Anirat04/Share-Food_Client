@@ -15,6 +15,7 @@ import Provider from './Provider/Provider.jsx';
 import MyFoodRequests from './Pages/MyFoodRequests/MyFoodRequests.jsx';
 import PrivateRoutes from './PrivateRoutes/PrivateRoutes.jsx';
 import AddFood from './Pages/AddFood/AddFood.jsx';
+import BasicTable from './ReactTable/BasicTable.jsx';
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>
+      },
+      {
+        path: "/react-table",
+        element: <PrivateRoutes><BasicTable></BasicTable></PrivateRoutes>
       }
     ],
   },
