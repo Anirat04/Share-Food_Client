@@ -10,13 +10,14 @@ import Home from './Pages/Home/Home.jsx';
 import Details from './Pages/Details/Details.jsx';
 import AvailableFoods from './Pages/AvailableFoods/AvailableFoods.jsx';
 import Login from './Pages/Login/Login.jsx';
-import Register from './Pages/Register/Register.jsx';
+
 import Provider from './Provider/Provider.jsx';
 import MyFoodRequests from './Pages/MyFoodRequests/MyFoodRequests.jsx';
 import PrivateRoutes from './PrivateRoutes/PrivateRoutes.jsx';
 import AddFood from './Pages/AddFood/AddFood.jsx';
 import ManageMyFoods from './Pages/ManageMyFoods/ManageMyFoods.jsx';
 import Error from './Pages/Error/Error.jsx';
+import Register from './Pages/Register/Register.jsx';
 
 const router = createBrowserRouter([
   {

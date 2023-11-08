@@ -4,6 +4,9 @@ import { ProviderContext } from "../../Provider/Provider";
 // import { ProviderContext } from "../../provider/provider";
 import Swal from 'sweetalert2';
 import { Helmet } from "react-helmet";
+import Lottie from "lottie-react";
+// import LogReg from "./LogReg.json"
+import RegisterAnim from "./RegisterAnim.json"
 
 
 const Register = () => {
@@ -44,50 +47,53 @@ const Register = () => {
     }
 
     return (
-        <div className="min-h-screen bg-base-200">
+        <div className="min-h-screen">
             <Helmet>
                 <title>ShareFood | Register
                 </title>
             </Helmet>
             <div className="hero pt-[80px] pb-[100px]">
-                <div className="hero-content flex-col">
-                    <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold">Register now!</h1>
-                    </div>
-                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                        <form className="card-body" onSubmit={handleRegister}>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Name</span>
-                                </label>
-                                <input type="text" name="name" placeholder="Your name" className="input input-bordered" required />
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Image URL</span>
-                                </label>
-                                <input type="text" name="ImageURL" placeholder="URL" className="input input-bordered" />
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Email</span>
-                                </label>
-                                <input type="email" name="email" placeholder="Email" className="input input-bordered" required />
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Password</span>
-                                </label>
-                                <input type="password" name="password" placeholder="Password" className="input input-bordered" required />
-                                <label className="label">
-                                    <p className="text-red-500">{regError}</p>
-                                </label>
-                            </div>
-                            <div className="form-control mt-6">
-                                <button className="btn btn-primary border-black font-bold bg-black text-white hover:bg-base-300 hover:border-black hover:text-black">Register</button>
-                            </div>
-                            <p>Already have an account? Please <Link to="/login"><button className="btn-link text-[#2b87ff] font-bold uppercase">Login</button></Link></p>
-                        </form>
+                <div className="hero-content flex">
+                    <Lottie className="min-w-[600px]" animationData={RegisterAnim}></Lottie>
+                    <div>
+                        <div className="text-center lg:text-left mb-8">
+                            <h1 className="text-5xl font-bold text-center">Register now!</h1>
+                        </div>
+                        <div className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
+                            <form className="card-body w-[500px] py-[60px]" onSubmit={handleRegister}>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Name</span>
+                                    </label>
+                                    <input type="text" name="name" placeholder="Your name" className="input input-bordered" required />
+                                </div>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Image URL</span>
+                                    </label>
+                                    <input type="text" name="ImageURL" placeholder="URL" className="input input-bordered" />
+                                </div>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Email</span>
+                                    </label>
+                                    <input type="email" name="email" placeholder="Email" className="input input-bordered" required />
+                                </div>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Password</span>
+                                    </label>
+                                    <input type="password" name="password" placeholder="Password" className="input input-bordered" required />
+                                    <label className="label">
+                                        <p className="text-red-500">{regError}</p>
+                                    </label>
+                                </div>
+                                <div className="form-control mt-6">
+                                    <button className="btn btn-primary border-black font-bold bg-black text-white hover:bg-base-300 hover:border-black hover:text-black">Register</button>
+                                </div>
+                                <p className="text-center">Already have an account? Please <Link to="/login"><button className="btn-link text-[#2b87ff] font-bold uppercase">Login</button></Link></p>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

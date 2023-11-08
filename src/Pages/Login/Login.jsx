@@ -4,6 +4,8 @@ import { ProviderContext } from "../../Provider/Provider";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
+import Lottie from "lottie-react";
+import LogReg from "./LogReg"
 
 
 
@@ -56,45 +58,46 @@ const Login = () => {
     }
 
     return (
-        <div className="min-h-screen bg-base-200 pb-[100px]">
+        <div className="min-h-screen pb-[100px]">
             <Helmet>
                 <title>ShareFood | Login
                 </title>
             </Helmet>
             <div className="hero pt-[50px]">
-                <div className="hero-content flex-col">
-                    <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold">Login now!</h1>
-                    </div>
-                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                        <form className="card-body" onSubmit={handleLogin}>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Email</span>
-                                </label>
-                                <input type="email" name="email" placeholder="email" className="input input-bordered" required />
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Password</span>
-                                </label>
-                                <input type="password" name="password" placeholder="password" className="input input-bordered" required />
-                                <label className="label">
-                                    <p className="text-red-500">{loginError}</p>
-                                    {/* <a href="#" className="label-text-alt link link-hover">Forgot password?</a> */}
-                                </label>
-                            </div>
-                            <div className="form-control mt-6">
-                                <button className="btn btn-primary border-black font-bold bg-black text-white hover:bg-base-300 hover:border-black hover:text-black">Login</button>
-                            </div>
-                            <div onClick={handleGoogleSignIn} className="form-control">
+                <div className="hero-content">
+                    <Lottie animationData={LogReg}></Lottie>
+                    <div className="">
+                        <h1 className="text-5xl font-bold text-center mb-[30px]">Login now!</h1>
+                        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                            <form className="card-body" onSubmit={handleLogin}>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Email</span>
+                                    </label>
+                                    <input type="email" name="email" placeholder="email" className="input input-bordered" required />
+                                </div>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Password</span>
+                                    </label>
+                                    <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+                                    <label className="label">
+                                        <p className="text-red-500">{loginError}</p>
+                                        {/* <a href="#" className="label-text-alt link link-hover">Forgot password?</a> */}
+                                    </label>
+                                </div>
+                                <div className="form-control mt-6">
+                                    <button className="btn btn-primary border-black font-bold bg-black text-white hover:bg-base-300 hover:border-black hover:text-black">Login</button>
+                                </div>
+                                <div onClick={handleGoogleSignIn} className="form-control">
 
-                                <button className="btn btn-primary border-black font-bold bg-black text-white hover:bg-base-300 hover:border-black hover:text-black"><i className="fa-brands fa-google"></i>Google</button>
-                            </div>
-                            <p>Don't have any account? Please <Link to="/register"><button className="btn-link font-bold uppercase">Register</button></Link></p>
-                            {/* <p><button  className="btn btn-link">Google</button></p> */}
+                                    <button className="btn btn-primary border-black font-bold bg-black text-white hover:bg-base-300 hover:border-black hover:text-black"><i className="fa-brands fa-google"></i>Google</button>
+                                </div>
+                                <p>Don't have any account? Please <Link to="/register"><button className="btn-link font-bold uppercase">Register</button></Link></p>
+                                {/* <p><button  className="btn btn-link">Google</button></p> */}
 
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
