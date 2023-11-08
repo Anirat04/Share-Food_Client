@@ -1,4 +1,4 @@
-/* eslint-disable react/jsx-key */
+
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { useTable } from 'react-table'
 // import MOCK_DATA from './MOCK_DATA.json'
@@ -190,7 +190,7 @@ const BasicTable = () => {
         prepareRow,
     } = tableInstance
 
-    // console.log(headerGroups)
+    console.log(headerGroups)
     // console.log(rows)
     return (
         <div className='max-w-[1240px] mx-auto'>
@@ -278,10 +278,10 @@ const BasicTable = () => {
                     pauseOnHover
                     theme="light"
                 />
-                <div className="modal-box">
-                    <section className=" dark:text-gray-100  min-w-full">
-                        <form onSubmit={handleEdit} className="container w-full  p-8 mx-auto bg-[#4898b8] space-y-6 rounded-md shadow">
-                            <h2 className="w-full text-center text-[40px] font-bold leadi text-gray-900">Add New Food</h2>
+                <div className="modal-box bg-[#4898b8]">
+                    <section className=" dark:text-gray-100  min-w-full pb-[30px]">
+                        <form onSubmit={handleEdit} className="container w-full  p-3 pb-[10px] mx-auto bg-[#4898b8] space-y-6 rounded-md">
+                            <h2 className="w-full text-center text-[40px] font-bold leadi text-gray-900">Update Food</h2>
                             {/*  */}
                             <div className="grid grid-cols-2 gap-5">
                                 {/* Food name */}
@@ -388,10 +388,13 @@ const BasicTable = () => {
                             <div className="flex justify-center">
                                 <button type="submit" className="btn px-[60px] w-[200px] hover:w-[450px] transition-all hover:w-ful text-white bg-transparent rounded-lg hover:bg-[#23aade] hover:border-[#23aade] hover:text-white">Update Food info</button>
                             </div>
-                            <form method="dialog">
-                                <button className="w-full px-4 py-2 font-bold rounded shadow focus:outline-none focus:ring hover:ring focus:ri dark:bg-violet-400 focus:ri hover:ri dark:text-gray-900">close</button>
-                            </form>
                         </form>
+
+                        <div>
+                            <form method="dialog" className="flex justify-center">
+                                <button className="btn px-[60px] w-[200px] hover:w-[450px] transition-all hover:w-ful text-white bg-transparent rounded-lg hover:bg-[#23aade] hover:border-[#23aade] hover:text-white">close</button>
+                            </form>
+                        </div>
 
                     </section>
                 </div>

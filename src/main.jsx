@@ -16,6 +16,7 @@ import MyFoodRequests from './Pages/MyFoodRequests/MyFoodRequests.jsx';
 import PrivateRoutes from './PrivateRoutes/PrivateRoutes.jsx';
 import AddFood from './Pages/AddFood/AddFood.jsx';
 import ManageMyFoods from './Pages/ManageMyFoods/ManageMyFoods.jsx';
+import Error from './Pages/Error/Error.jsx';
 
 const router = createBrowserRouter([
   {
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
       }
     ],
   },
+  {
+    path: "*",
+    element: <Error></Error>
+  }
 
 ]);
 
