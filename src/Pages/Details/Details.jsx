@@ -4,6 +4,8 @@ import { useLoaderData } from "react-router-dom";
 import { ProviderContext } from "../../Provider/Provider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Details = () => {
     // const [details , setDetails] = useState([])
@@ -60,16 +62,19 @@ const Details = () => {
             Food_id,
             Donator_email,
             Donator_name,
-            User_email,
+            Requester_email: User_email,
+            Requester_Img: user.photoURL,
+            Requester_name: user.displayName,
             Request_date,
             Pickup_location,
             Expire_date,
             Additional_note,
             Donation_amount,
-            Food_status : `${takeDetails.Food_status}`
+            Food_quantity: takeDetails.Food_quantity,
+            Food_status: `${takeDetails.Food_status}`
         }
 
-        fetch('http://localhost:5000/foodRequests', {
+        fetch('https://share-food-server-beige.vercel.app/foodRequests', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -79,7 +84,16 @@ const Details = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                alert('data added')
+                toast.success('The Request is confirmed', {
+                    position: "bottom-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
             })
             .catch((err) => {
                 console.log(err);
@@ -118,6 +132,18 @@ const Details = () => {
                         {/* Open the modal using document.getElementById('ID').showModal() method */}
                         {/* <button className="btn" >open modal</button> */}
                         <dialog id="my_modal_1" className="modal">
+                            <ToastContainer
+                                position="bottom-right"
+                                autoClose={5000}
+                                hideProgressBar={false}
+                                newestOnTop={false}
+                                closeOnClick
+                                rtl={false}
+                                pauseOnFocusLoss
+                                draggable
+                                pauseOnHover
+                                theme="light"
+                            />
                             <div className="modal-box p-0 min-w-[1100px]">
                                 <section className=" dark:text-gray-100 bg-slate-600 min-w-full">
                                     <form method="dialog" onSubmit={handleRequestData} className="container w-full  p-8 mx-auto space-y-6 rounded-md shadow">

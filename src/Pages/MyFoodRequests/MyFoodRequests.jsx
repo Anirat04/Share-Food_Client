@@ -8,7 +8,7 @@ const MyFoodRequests = () => {
     const { user } = useContext(ProviderContext)
     const [userRequests, setUserRequests] = useState([]);
 
-    const url = `http://localhost:5000/foodRequests?User_email=${user?.email}`;
+    const url = `https://share-food-server-beige.vercel.app/foodRequests?Requester_email=${user?.email}`;
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
@@ -30,7 +30,7 @@ const MyFoodRequests = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed & getMap[0].Food_status !== 'Delivered') {
-                fetch(`http://localhost:5000/foodRequests/${id}`, {
+                fetch(`https://share-food-server-beige.vercel.app/foodRequests/${id}`, {
                     method: 'DELETE',
                 })
                     .then(res => res.json())
@@ -58,7 +58,7 @@ const MyFoodRequests = () => {
         });
     }
     return (
-        <div className="max-w-[1240px] mx-auto">
+        <div className="max-w-[1260px] mx-auto">
             <Helmet>
                 <title>ShareFood | My Food Requests
                 </title>
@@ -70,9 +70,11 @@ const MyFoodRequests = () => {
                     <thead>
                         <tr className="text-[20px]">
                             <th>SL. No.</th>
+                            <th>Food Name</th>
                             <th>Donator Name</th>
                             <th>Location</th>
                             <th>Expire Date</th>
+                            <th>Request Time</th>
                             <th>Donation Amount</th>
                             <th>Status</th>
                         </tr>
@@ -83,9 +85,11 @@ const MyFoodRequests = () => {
                             userRequests.map((data, index) => (
                                 <tr key={data._id} className="text-[18px]">
                                     <th>{index + 1}</th>
+                                    <td>{data.Food_name}</td>
                                     <td>{data.Donator_name}</td>
                                     <td>{data.Pickup_location}</td>
                                     <td>{data.Expire_date}</td>
+                                    <td>{data.Request_date}</td>
                                     <td>{data.Donation_amount}</td>
                                     <td>{data.Food_status}</td>
                                     <th>

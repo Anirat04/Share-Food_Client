@@ -18,6 +18,7 @@ import AddFood from './Pages/AddFood/AddFood.jsx';
 import ManageMyFoods from './Pages/ManageMyFoods/ManageMyFoods.jsx';
 import Error from './Pages/Error/Error.jsx';
 import Register from './Pages/Register/Register.jsx';
+import ManageSingleFood from './Pages/ManageSingleFood/ManageSingleFood.jsx';
 
 const router = createBrowserRouter([
   {
@@ -30,17 +31,17 @@ const router = createBrowserRouter([
       },
       {
         path: "/food/:id",
-        element: <Details></Details>,
-        loader: ({ params }) => fetch(`http://localhost:5000/available_foods/${params.id}`)
+        element: <PrivateRoutes><Details></Details></PrivateRoutes>,
+        loader: ({ params }) => fetch(`https://share-food-server-beige.vercel.app/available_foods/${params.id}`)
       },
       {
         path: "/available-foods",
         element: <AvailableFoods></AvailableFoods>,
-        loader: () => fetch(`http://localhost:5000/available_foods`)
+        loader: () => fetch(`https://share-food-server-beige.vercel.app/available_foods`)
       },
       {
         path: "/add-food",
-        element: <AddFood></AddFood>
+        element: <PrivateRoutes><AddFood></AddFood></PrivateRoutes>
       },
       {
         path: "/available-foods/login",
@@ -53,6 +54,11 @@ const router = createBrowserRouter([
       {
         path: "/myFoodRequests",
         element: <PrivateRoutes><MyFoodRequests></MyFoodRequests></PrivateRoutes>
+      },
+      {
+        path: "/manage/:id",
+        element: <PrivateRoutes><ManageSingleFood></ManageSingleFood></PrivateRoutes>,
+        loader: ({ params }) => fetch(`https://share-food-server-beige.vercel.app/foodRequests/${params.id}`)
       },
       {
         path: "/login",

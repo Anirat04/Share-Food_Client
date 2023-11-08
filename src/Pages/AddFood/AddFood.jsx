@@ -32,7 +32,7 @@ const AddFood = () => {
             Food_status,
         }
 
-        fetch('http://localhost:5000/available_foods', {
+        fetch('https://share-food-server-beige.vercel.app/available_foods', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -60,7 +60,7 @@ const AddFood = () => {
                 <title>ShareFood | Add Food
                 </title>
             </Helmet>
-            <section className=" dark:text-gray-100  min-w-full">
+            <section className=" dark:text-gray-100  min-w-full mb-[100px]">
                 <form onSubmit={handleAddFood} className="container w-full  p-8 mx-auto bg-[#4898b8] space-y-6 rounded-md shadow">
                     <h2 className="w-full text-center text-[40px] font-bold leadi text-gray-900">Add New Food</h2>
                     {/*  */}

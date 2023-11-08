@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 // import { toast } from 'react-toastify';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
 
 const BasicTable = () => {
@@ -23,7 +24,7 @@ const BasicTable = () => {
         columns,
         data
     })
-    const url = `http://localhost:5000/available_foods?Donator_email=${user?.email}`
+    const url = `https://share-food-server-beige.vercel.app/available_foods?Donator_email=${user?.email}`
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
@@ -49,7 +50,7 @@ const BasicTable = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/available_foods/${getRowDataID}`, {
+                fetch(`https://share-food-server-beige.vercel.app/available_foods/${getRowDataID}`, {
                     method: "DELETE",
                 })
                     .then(res => res.json())
@@ -126,7 +127,7 @@ const BasicTable = () => {
             Additional_notes: Additional_note,
             Food_status: Food_status,
         }
-        fetch(`http://localhost:5000/available_foods/${getIdForEdit}`, {
+        fetch(`https://share-food-server-beige.vercel.app/available_foods/${getIdForEdit}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
@@ -190,8 +191,8 @@ const BasicTable = () => {
         prepareRow,
     } = tableInstance
 
-    console.log(headerGroups)
-    // console.log(rows)
+    // console.log(headerGroups)
+    console.log(rows)
     return (
         <div className='max-w-[1240px] mx-auto'>
             <table className='table border' {...getTableProps()}>
@@ -245,7 +246,9 @@ const BasicTable = () => {
                                             })
                                         }
                                         <td className='border'>
-                                            <button onClick={() => handleDelete(row)} className='btn'>edit</button>
+                                            <Link to={`/manage/${row.original._id}`}>
+                                                <button className='btn'>Manage</button>
+                                            </Link>
                                         </td>
                                         <td className='border'>
                                             <button onClick={() => handleButtonClick(row)} className='btn'>Edit</button>

@@ -3,7 +3,7 @@ import BasicTable from "../../ReactTable/BasicTable";
 
 const ManageMyFoods = () => {
     return (
-        <div>
+        <div className="min-h-[600px]">
             <Helmet>
                 <title>ShareFood | Manage My Foods
                 </title>
