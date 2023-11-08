@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Lottie from "lottie-react";
 import ErrorAnimation from "./ErrorAnimation"
 import { Link } from "react-router-dom";
