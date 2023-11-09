@@ -30,10 +30,10 @@ const Featured_Foods = () => {
                         <p className="py-6 text-[16px] capitalize">Sharing Flavors, Spreading Hope: Culinary Generosity in Our Featured Food Collection</p>
                     </div>
                 </div>
-                <div className="Features_items grid grid-cols-3 justify-items-center gap-[25px] items-center">
+                <div className="Features_items grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-[25px] items-center">
                     {
                         sortedDataDescending?.map(data => (
-                            <div key={data._id} className="food_card flex flex-col min-w-[390px] p-6 space-y-6 overflow-hidden rounded-lg shadow-md bg-white text-gray-900 hover:scale-105 transition-all duration-300 border mb-[30px] hover:border-[#23aade]">
+                            <div key={data._id} className="food_card flex flex-col min-w-[350px] max-w-[350px] xl:min-w-[390px] p-6 space-y-6 overflow-hidden rounded-lg shadow-md bg-white text-gray-900 hover:scale-105 transition-all duration-300 border mb-[30px] hover:border-[#23aade]">
                                 {/* donator avatar */}
                                 <div className="flex space-x-4 items-center">
                                     <img alt="" src={`${data.Donator_img}`} className="object-cover w-[50px] h-[50px] rounded-full shadow border border-black dark:bg-gray-500" />

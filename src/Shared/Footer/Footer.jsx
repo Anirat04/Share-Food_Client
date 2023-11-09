@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 const Footer = () => {
     return (
         <div className="bg-slate-600">
-            <footer className=" max-w-[1240px] mx-auto px-4 text-gray-100">
-                <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
-                    <div className="lg:w-1/3">
+            <footer className=" max-w-[1240px] mx-auto px-4 text-gray-100 pt-[40px]">
+                <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0 border-b-[1px]">
+                    <div className="w-full flex justify-center lg:w-1/3">
                         <Link>
                             <img className="max-h-[100px]" src="https://i.ibb.co/ykvfqf8/share-food-logo.png" alt="" />
                         </Link>
@@ -54,7 +54,7 @@ const Footer = () => {
                                 </li>
                             </ul>
                         </div>
-                        <div className="space-y-3">
+                        <div className="space-y-3 ">
                             <div className="uppercase dark:text-gray-50">Social media</div>
                             <div className="flex justify-start space-x-3">
                                 <a rel="noopener noreferrer" href="#" title="Facebook" className="flex items-center p-1">
