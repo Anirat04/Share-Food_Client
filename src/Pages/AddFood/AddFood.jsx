@@ -42,7 +42,11 @@ const AddFood = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                alert('data added to available collection')
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Great',
+                    text: 'You have successfully added a Food to donate',
+                })
             })
             .catch((err) => {
                 console.log(err);

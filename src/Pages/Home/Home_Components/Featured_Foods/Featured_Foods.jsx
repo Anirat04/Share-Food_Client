@@ -1,7 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import './Featured_Foods.css'
 import { Link } from "react-router-dom";
+import { ProviderContext } from "../../../../Provider/Provider";
+import Lottie from "lottie-react";
+import LoadingJson from "./Loading.json"
+
+
+
 const Featured_Foods = () => {
 
     const [foodCard, setFoodCard] = useState()
@@ -16,7 +22,11 @@ const Featured_Foods = () => {
     const sortedDataDescending = foodCard?.slice().sort((a, b) => b.Food_quantity - a.Food_quantity);
 
     // console.log(sortedDataDescending);
-
+    const {loading} = useContext(ProviderContext)
+    if(loading){
+        return <div className='max-w-[200px] mx-auto mt-[200px]'><Lottie animationData={LoadingJson}></Lottie></div>
+        // return <progress className="progress w-56"></progress>
+    }
 
     // console.log(foodCard)
 
@@ -60,7 +70,7 @@ const Featured_Foods = () => {
                                         </div>
                                         <div className="flex justify-center">
                                             <Link to={`/food/${data._id}`}>
-                                                <button className="py-[10px] mb-[20px] rounded-lg mt-[10px] min-w-full border border-[#23aade] bg-white text-[#23aade] font-bold hover:bg-[#23aade] hover:text-white">View Details</button>
+                                                <button className="py-[10px] px-[20px] mb-[20px] rounded-lg mt-[10px] min-w-full border border-[#23aade] bg-white text-[#23aade] font-bold hover:bg-[#23aade] hover:text-white">View Details</button>
                                             </Link>
                                         </div>
                                     </div>

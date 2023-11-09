@@ -1,34 +1,31 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from "react";
 import { ProviderContext } from "../../Provider/Provider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
-import { useLoaderData, useParams } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
+import { useLoaderData } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const ManageSingleFood = () => {
     const { user } = useContext(ProviderContext)
     const [singleFoods, setSingleFoods] = useState([]);
-    // const [getIDofData, setGetIDofData] = useState([]);
-    // const getParams = useParams()
     const getLoaderData = useLoaderData()
-    console.log(getLoaderData)
+    
     useEffect(() => {
         setSingleFoods(getLoaderData)
-    }, [])
+    }, [getLoaderData])
 
     const handleDelivered = data => {
-        // setGetIDofData(data.Food_id)
-        console.log('single data', data)
         const url = `http://localhost:5000/foodRequests/${data?.Food_id}`;
-        console.log('Request URL:', url);
+
         fetch(url, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
             },
-            body: JSON.stringify({ Food_status: 'Delivered' }),
+            body: JSON.stringify({ Food_status: 'Delivered', _id: data._id }),
         })
             .then(res => {
                 if (!res.ok) {
@@ -36,25 +33,32 @@ const ManageSingleFood = () => {
                 }
                 return res.json();
             })
-            .then(data => {
-                console.log('getdata', data);
-                if (data.modifiedCount > 0) {
-                    console.log(data.modifiedCount);
+            .then(responseData => {
+                console.log('responseData', responseData);
+                if (responseData.result1.modifiedCount > 0) {
+                    console.log('Done!!!');
+                    const remaining = singleFoods.filter(singleFood => singleFood._id !== data._id);
+                    const updatedObject = singleFoods.find(singleFood => singleFood._id === data._id);
+
+
+                    if (updatedObject) {
+                        // Update the Food_status to 'Delivered'
+                        updatedObject.Food_status = 'Delivered';
+
+                        const newSingleFoods = [updatedObject, ...remaining];
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Great',
+                            text: 'The food has been delivered',
+                        })
+                        setSingleFoods(newSingleFoods);
+                    }
                 }
             })
             .catch(error => {
                 console.error('Fetch error:', error);
             });
-        // .then(res => res.json())
-        // .then(data => {
-        //     console.log('getdata', data)
-        //     if (data.modifiedCount > 0) {
-        //         console.log(data.modifiedCount)
-        //     }
-        // })
     }
-
-
     return (
         <div className="max-w-[1240px] mx-auto">
             <Helmet>
@@ -91,27 +95,37 @@ const ManageSingleFood = () => {
                         {/* row 1 */}
                         {
                             singleFoods?.map((data, index) => (
-                                <tr key={data._id} className="text-[18px]">
+                                <tr key={data?._id} className="text-[18px]">
                                     <th>{index + 1}</th>
                                     <td className='border'>
                                         <div className="flex items-center space-x-3">
                                             <div className="avatar">
                                                 <div className="mask mask-squircle w-12 h-12">
-                                                    <img src={data.Requester_Img} alt="Avatar Tailwind CSS Component" />
+                                                    <img src={data?.Requester_Img} alt="Avatar Tailwind CSS Component" />
                                                 </div>
                                             </div>
                                             <div>
-                                                <div className="font-bold">{data.Requester_name}</div>
+                                                <div className="font-bold">{data?.Requester_name}</div>
                                             </div>
                                         </div>
                                     </td>
-                                    <td>{data.Requester_email}</td>
-                                    <td>{data.Request_date}</td>
-                                    <td>{data.Food_name}</td>
-                                    <td>{data.Food_status}</td>
+                                    <td>{data?.Requester_email}</td>
+                                    <td>{data?.Request_date}</td>
+                                    <td>{data?.Food_name}</td>
+                                    <td>{data?.Food_status}</td>
                                     <th>
-                                        <button onClick={() => handleDelivered(data)} className="btn text-white bg-[#23aade] rounded-lg hover:bg-transparent hover:border-red-600 hover:text-red-600">Change Status</button>
-
+                                        {data?.Food_status === 'Delivered' ? (
+                                            <span className="btn pointer-events-none hover:bg-gray-400 bg-gray-400 text-white rounded-lg">
+                                                Delivered
+                                            </span>
+                                        ) : (
+                                            <button
+                                                onClick={() => handleDelivered(data)}
+                                                className="btn text-white bg-[#23aade] rounded-lg hover:bg-transparent hover:border-green-500 hover:text-green-500"
+                                            >
+                                                Pending
+                                            </button>
+                                        )}
                                     </th>
                                 </tr>
                             ))
