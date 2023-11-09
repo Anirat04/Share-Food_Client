@@ -32,7 +32,7 @@ const AddFood = () => {
             Food_status,
         }
 
-        fetch('http://localhost:5000/available_foods', {
+        fetch('https://share-food-server-beige.vercel.app/available_foods', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

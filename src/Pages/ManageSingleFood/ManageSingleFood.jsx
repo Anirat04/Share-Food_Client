@@ -12,13 +12,13 @@ const ManageSingleFood = () => {
     const { user } = useContext(ProviderContext)
     const [singleFoods, setSingleFoods] = useState([]);
     const getLoaderData = useLoaderData()
-    
+
     useEffect(() => {
         setSingleFoods(getLoaderData)
     }, [getLoaderData])
 
     const handleDelivered = data => {
-        const url = `http://localhost:5000/foodRequests/${data?.Food_id}`;
+        const url = `https://share-food-server-beige.vercel.app/foodRequests/${data?.Food_id}`;
 
         fetch(url, {
             method: 'PATCH',

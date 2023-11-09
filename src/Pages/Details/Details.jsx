@@ -74,7 +74,7 @@ const Details = () => {
             Food_status: `${takeDetails.Food_status}`
         }
 
-        fetch('http://localhost:5000/foodRequests', {
+        fetch('https://share-food-server-beige.vercel.app/foodRequests', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

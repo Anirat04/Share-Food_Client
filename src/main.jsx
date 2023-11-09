@@ -32,12 +32,12 @@ const router = createBrowserRouter([
       {
         path: "/food/:id",
         element: <PrivateRoutes><Details></Details></PrivateRoutes>,
-        loader: ({ params }) => fetch(`http://localhost:5000/available_foods/${params.id}`)
+        loader: ({ params }) => fetch(`https://share-food-server-beige.vercel.app/available_foods/${params.id}`)
       },
       {
         path: "/available-foods",
         element: <AvailableFoods></AvailableFoods>,
-        loader: () => fetch(`http://localhost:5000/available_foods`)
+        loader: () => fetch(`https://share-food-server-beige.vercel.app/available_foods`)
       },
       {
         path: "/add-food",
@@ -58,7 +58,7 @@ const router = createBrowserRouter([
       {
         path: "/manage/:id",
         element: <PrivateRoutes><ManageSingleFood></ManageSingleFood></PrivateRoutes>,
-        loader: ({ params }) => fetch(`http://localhost:5000/foodRequests/${params.id}`)
+        loader: ({ params }) => fetch(`https://share-food-server-beige.vercel.app/foodRequests/${params.id}`)
       },
       {
         path: "/login",
