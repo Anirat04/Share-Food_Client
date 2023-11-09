@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const ManageSingleFood = () => {
     const { user } = useContext(ProviderContext)
     const [singleFoods, setSingleFoods] = useState([]);
-    const [getIDofData, setGetIDofData] = useState([]);
+    // const [getIDofData, setGetIDofData] = useState([]);
     // const getParams = useParams()
     const getLoaderData = useLoaderData()
     console.log(getLoaderData)
@@ -19,40 +19,39 @@ const ManageSingleFood = () => {
     }, [])
 
     const handleDelivered = data => {
-        // const request = {
-        //     // Food_name: data.Food_name,
-        //     // Food_img: data.Food_image,
-        //     // Food_quantity: data.Food_quantity,
-        //     // Pickup_location: data.Pickup_location,
-        //     // Expired_date: data.Expire_date,
-        //     // Additional_notes: data.Additional_note,
-        //     Food_status:'Delivered',
-        // }
-        setGetIDofData(data.Food_id)
+        // setGetIDofData(data.Food_id)
         console.log('single data', data)
-        fetch(`https://share-food-server-beige.vercel.app/foodRequests/${data.Food_id}`, {
+        const url = `http://localhost:5000/foodRequests/${data?.Food_id}`;
+        console.log('Request URL:', url);
+        fetch(url, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
             },
             body: JSON.stringify({ Food_status: 'Delivered' }),
         })
-            .then(res => res.json())
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(`HTTP error! Status: ${res.status}`);
+                }
+                return res.json();
+            })
             .then(data => {
-                console.log('getdata', data)
+                console.log('getdata', data);
                 if (data.modifiedCount > 0) {
-                    toast.success('Food Status changed successfully', {
-                        position: "bottom-right",
-                        autoClose: 2000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "light",
-                    });
+                    console.log(data.modifiedCount);
                 }
             })
+            .catch(error => {
+                console.error('Fetch error:', error);
+            });
+        // .then(res => res.json())
+        // .then(data => {
+        //     console.log('getdata', data)
+        //     if (data.modifiedCount > 0) {
+        //         console.log(data.modifiedCount)
+        //     }
+        // })
     }
 
 

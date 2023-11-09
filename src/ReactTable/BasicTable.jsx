@@ -24,7 +24,7 @@ const BasicTable = () => {
         columns,
         data
     })
-    const url = `https://share-food-server-beige.vercel.app/available_foods?Donator_email=${user?.email}`
+    const url = `http://localhost:5000/available_foods?Donator_email=${user?.email}`
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
@@ -50,7 +50,7 @@ const BasicTable = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://share-food-server-beige.vercel.app/available_foods/${getRowDataID}`, {
+                fetch(`http://localhost:5000/available_foods/${getRowDataID}`, {
                     method: "DELETE",
                 })
                     .then(res => res.json())
@@ -127,7 +127,7 @@ const BasicTable = () => {
             Additional_notes: Additional_note,
             Food_status: Food_status,
         }
-        fetch(`https://share-food-server-beige.vercel.app/available_foods/${getIdForEdit}`, {
+        fetch(`http://localhost:5000/available_foods/${getIdForEdit}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
